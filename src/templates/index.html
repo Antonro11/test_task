@@ -78,7 +78,7 @@
 
             {% endfor %}
         {% else %}
-             {% for product in admin_account.index_shop.products.all %}
+             {% for product in instance_shop.index_shop.products.all %}
               <div class="one-product">
                 <p>{{product.product_name}}</p>
                 <img src={{product.product_image}} height="220px" width="auto">
@@ -86,7 +86,6 @@
              </div>
              {% endfor %}
          {% endif %}
-
 
          </div>
     <script>

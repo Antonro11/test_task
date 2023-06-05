@@ -3,7 +3,8 @@ import json
 from django.shortcuts import render
 
 from account.models import Account
-from app.models import Shop, Product
+from app.create_instances import create_instances
+from app.models import Shop, Product, ShopCard, ShopIndexAnon
 
 
 # Create your views here.
@@ -12,15 +13,32 @@ from app.models import Shop, Product
 def index(request):
     all_shops = Shop.objects.all()
     all_products = Product.objects.all()
+    print(request.user)
 
+    create_instances()
+
+    if request.user.username == "admin" and not request.user.shop_card:
+        request.user.shop_card = ShopCard.objects.create(balance=20,products="[]")
+        request.user.index_shop = Shop.objects.get(shop_name="Burger-King")
+
+    if len(ShopIndexAnon.objects.all())==0:
+        ShopIndexAnon.objects.create(index_shop=Shop.objects.get(shop_name="Burger-King"))
+    instance_shop = ShopIndexAnon.objects.get(pk=1)
 
 
     if request.method == "POST":
         data = json.loads(request.body)
+
+
         if "shop_pk" in data.keys():
-            shop = Shop.objects.get(pk=data["shop_pk"])
-            request.user.index_shop = shop
-            request.user.save()
+            if str(request.user)!="AnonymousUser":
+                shop = Shop.objects.get(pk=data["shop_pk"])
+                request.user.index_shop = shop
+                request.user.save()
+            if str(request.user) == "AnonymousUser":
+                instance_shop.index_shop = Shop.objects.get(pk=data["shop_pk"])
+                instance_shop.save()
+
 
         elif "product_pk" in data.keys():
             product = Product.objects.get(pk=data["product_pk"])
@@ -39,7 +57,7 @@ def index(request):
                        "card_products": json_card_products, "card_balance": card_balance})
 
     return render(request, "index.html",
-                  {"account": request.user, "all_shops": all_shops, "all_products": all_products, "admin_account": Account.objects.get(pk=1)})
+                  {"account": request.user, "all_shops": all_shops, "all_products": all_products, "instance_shop":instance_shop})  # "admin_account": Account.objects.get(pk=1)
 
 
 

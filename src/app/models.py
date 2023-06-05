@@ -26,3 +26,7 @@ class Product(models.Model):
 class ShopCard(models.Model):
     balance = models.IntegerField(default=20)
     products = models.CharField(max_length=200, default="[]")
+
+
+class ShopIndexAnon(models.Model):
+    index_shop = models.ForeignKey(Shop, on_delete=models.CASCADE, blank=True,null=True)
