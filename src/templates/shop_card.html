@@ -1,0 +1,30 @@
+{% extends "index.html" %}
+{% load static %}
+{% block content %}
+    <title>Title</title>
+</head>
+
+
+<div class="container-card">
+    {% for product in card_products %}
+    <div>
+        <span>{{ forloop.counter }}.
+        {{ product.product_name }}</span>
+        <span>{{ product.price }} $ <button value={{forloop.counter}} class="delete-button" style="position:relative;right:-15px;">Delete</button></span>
+    </div>
+    {% endfor %}
+
+
+</div>
+{% if total_bill > user.shop_card.balance %}
+<div class="container" style="position:relative;display:flex;justify-content:center;width:20%; height:10%; top:50px; color:red;"><p class="bill-paragraph">{{total_bill}} $</p></div>
+<div class="container" style="position:relative;display:flex;justify-content:center;width:20%; height:10%; top:50px; color:red;"><p>{{bill_subtraction}} $ Needed</p></div>
+{% else %}
+<div class="container" style="position:relative;display:flex;justify-content:center;width:20%; height:10%; top:50px; color:green;"><p class="bill-paragraph">{{total_bill}} $</p></div>
+<div class="container" style="position:relative;display:flex;justify-content:center;width:20%; height:10%; top:50px;"><button id="button-pay" class="button-pay">Pay</button></div>
+{% endif %}
+
+
+<script src="{% static 'main-two.js' %}"></script>
+{% endblock %}
+</html>

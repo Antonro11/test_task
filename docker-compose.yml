@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+  backend:
+    build: .
+    working_dir: /django_chat/src/
+    command: sh -c "python manage.py migrate && python manage.py runserver 0:8000 && python manage.py collectstatic"
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./src:/django_chat/src
+
+
+
+
+
+
+
+

@@ -1,0 +1,345 @@
+
+
+.div-chat {
+  width: 70%;
+  height: 400px;
+     margin: 0 auto; /* This centers the container horizontally */
+  display: flex;
+      justify-content: center; /* This centers the child elements vertically */
+    align-items: center; /* This centers the child elements horizontally */
+  background-color: lightblue;
+  overflow: auto;
+  flex-direction: column;
+  overflow-y: scroll;
+}
+
+.user-info {
+  position:absolute;
+  right:70px;
+}
+
+.center-button {
+    text-align:center;
+    width:5%
+    background-color:red;
+  }
+
+.title-chat-room {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #333;
+  background-color: #fff;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+
+
+
+header {
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  height: 60px;
+  padding: 10px 0;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width:70%;
+  margin: 0 auto;
+}
+
+.container-second {
+  display: grid;
+  grid-template-columns: 20% 80%;
+  grid-auto-rows: minmax(0, 1fr);
+  width: 70%;
+  height: 100%;
+  margin: 0 auto;
+  align-items: start;
+}
+
+.shops {
+  background-color: #f2f2f2;
+  padding: 10px;
+  overflow-y: auto;
+}
+
+.products {
+  background-color: #eaeaea;
+  padding: 10px;
+  overflow-y: auto;
+    columns: 2;
+  column-gap: 15px;
+
+}
+
+.shops p {margin: 100px 0;}
+.products p {
+  margin: 10px 0;
+}
+
+.shops, .products {
+  overflow: auto;
+}
+
+
+
+
+.logo {
+    display:flex;
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+}
+
+.username {
+  font-size: 18px;
+  font-weight: bold;
+  margin-right: 20px;
+}
+
+.register-link {
+  background-color: #4CAF50;
+  color: #fff;
+  text-decoration: none;
+  padding: 10px 20px;
+  border-radius: 20px;
+}
+
+.photo-list {
+
+    height:150px;
+    width:auto;
+    border-radius:50%;
+
+}
+
+
+.send-message-button {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #ffffff;
+  color: #333333;
+  border: 2px solid #333333;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.send-message-button:hover {
+  background-color: #333333;
+  color: #ffffff;
+}
+
+.username {
+  display: inline-block;
+  padding: 5px 10px;
+  background-color: #333333;
+  color: #ffffff;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-right: 10px;
+}
+
+.no-access-background {
+      display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+
+}
+
+.no-access-text {
+   font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+}
+
+
+
+.sign-in-link {
+  color: red;
+  font-size: 16px;
+  font-weight: bold;
+  text-decoration: none;
+  border: 2px solid red;
+  padding: 10px 20px;
+  border-radius: 20px;
+  background-color: white;
+  transition: all 0.3s ease-in-out;
+}
+
+.sign-in-link:hover {
+  background-color: red;
+  color: white;
+}
+
+
+
+
+.video-player {
+    background-color: rgb(63,62,62);
+    width:40%;
+
+}
+
+
+text-area {
+    height:75%;
+    width:100%;
+}
+
+.one-product {
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  text-align: center;
+  height: 100%;
+  overflow-y:auto;
+}
+
+
+
+.food-shop-paragraph {
+ font-size: 25px;
+  line-height: 1.4;
+  color: #333;
+  margin-bottom: 10px;
+  display: inline-block;
+  padding: 0 10px; /* Adjust the padding as needed */
+
+}
+
+.food-shop-paragraph strong {
+  font-weight: bold;
+}
+
+.food-shop-paragraph em {
+  font-style: italic;
+}
+
+.food-shop-paragraph a {
+  color: #0066cc;
+  text-decoration: none;
+}
+
+.food-shop-paragraph a:hover {
+  text-decoration: underline;
+}
+
+.button-shop {
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+}
+
+.button-shop:hover {
+  background-color: white;
+}
+
+.count-products {
+    position:relative;
+    right:-20px;
+    top:-15px;
+
+  background-color: red;
+  color: white;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  font-size: 14px;
+}
+
+
+   .container-card {
+        position:relative;
+        right:-15%;
+        display: grid;
+        gap: 10px;
+        width: 70%;
+        margin: 0 auto;
+
+    }
+
+    .container-card div {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        justify-content: space-between;
+    }
+
+    .container-card div:nth-child(odd) {
+        grid-template-columns: 1fr 1fr;
+    }
+
+.button-pay {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  background-color: green;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  width:150px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.button-pay:hover {
+  background-color: #45a049;
+}
+
+.button-pay:active {
+  background-color: #3e8e41;
+}
+
+
+  .bill-paragraph {
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 10px;
+  }
+
+  .bill-paragraph::before {
+    content: "Total: $";
+    font-weight: bold;
+  }
+
+
+    .balance {
+    position:relative;
+    right:20px;
+    top:-20px;
+    font-family: Arial, sans-serif;
+    font-size: 15px;
+    font-weight: bold;
+    color: #333;
+    padding: 10px;
+    background-color: #f2f2f2;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+  }

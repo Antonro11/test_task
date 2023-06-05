@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chat</title>
+</head>
+{% load static %}
+<link type="text/css" rel="stylesheet" href="{% static 'main.css' %}">
+<body>
+<header>
+  <div class="container" >
+      <div style="display:flex;">
+          {% if user.is_authenticated and user.shop_card %}
+          <p class="balance">{{user.shop_card.balance}} $ </p>
+          <div id="logo" class="logo"><a href="{% url 'app:card' %}">Shop cart</a> <p class="count-products">{{card_products|length}}</p></div>
+      {% endif %}
+<script>
+    card = {{card_products|safe}}
+    console.log(card)
+</script>
+
+          </div>
+
+    <div>
+
+        {% if user.is_authenticated %}
+
+
+      <span class="username" style="position:relative;right:15px;">{{user.username}}</span>
+
+
+
+
+
+<a href="{% url 'app:index' %}" class="register-link" style="position:relative;right:3px;">Shop</a>
+<a href="{% url 'account:logout' %}" class="sign-in-link">Logout</a>
+
+
+
+{% else %}
+<a href="{% url 'app:index' %}" class="register-link", style="position:relative;right:30px;">Home</a>
+<a href="{% url 'account:login' %}" class="sign-in-link">Sign in</a>
+{% endif %}
+    </div>
+  </div>
+</header>
+
+</br></br>
+
+{% block content %}
+
+
+
+
+
+
+
+<div class="container-second">
+     <div class="shops">
+    {% for shop in all_shops %}
+         {% if user.index_shop != shop %}
+        <button class="button-shop"  value={{shop.pk}}><p class="food-shop-paragraph">{{shop.shop_name}}</p></button>
+         {% else %}
+           <button class="button-shop" value={{shop.pk}}><p style="color:blue;" class="food-shop-paragraph">{{shop.shop_name}}</p></button>
+        {% endif %}
+    {% endfor %}
+</div>
+
+         <div class="products">
+        {% if user.username != "" %}
+           {% for product in user.index_shop.products.all %}
+             <div class="one-product">
+                <p>{{product.product_name}}</p>
+                <img src={{product.product_image}} height="220px" width="auto">
+                 <p>{{product.price}} $</p>
+                 <button class="product-link" value={{product.pk}}>Order</button>
+             </div>
+
+            {% endfor %}
+        {% else %}
+             {% for product in admin_account.index_shop.products.all %}
+              <div class="one-product">
+                <p>{{product.product_name}}</p>
+                <img src={{product.product_image}} height="220px" width="auto">
+                 <p>{{product.price}} $</p>
+             </div>
+             {% endfor %}
+         {% endif %}
+
+
+         </div>
+    <script>
+    allProducts = '{{all_products|safe}}';
+    allShops = '{{all_shops|safe}}';
+    </script>
+    <script type="text/javascript" src="{% static 'main.js' %}"></script>
+    {{shop_products}}
+</div>
+
+
+{% endblock %}
+
+</body>
+
+</html>
